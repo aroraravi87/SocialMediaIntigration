@@ -1,0 +1,43 @@
+﻿
+<div>
+    <script type="text/ng-template" id="alertModal">
+        <div class="modal-header">
+            <h4 class="modal-title">{{alertTitle}}</h4>
+        </div>
+        <div class="modal-body">
+            {{alertMessage}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="cancel()">Ok</button>
+        </div>
+    </script>
+</div>
+
+<div>
+    <script type="text/ng-template" id="alertConfModal">
+        <div class="modal-header">
+            <h4 class="modal-title">{{alertTitle}}</h4>
+        </div>
+        <div class="modal-body">
+            {{alertMessage}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="onOkClick()">Ok</button>
+        </div>
+    </script>
+</div>
+
+<div>
+    <script type="text/ng-template" id="replayConfermationModal">
+        <div class="modal-header">
+            <h4 class="modal-title">{{alertTitle}}</h4>
+        </div>
+        <div class="modal-body">
+            {{alertMessage}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="onReplayClick()">Replay</button>
+            <button class="btn btn-primary" type="button" ng-click="cancelConf()">Close</button>
+        </div>
+    </script>
+</div>

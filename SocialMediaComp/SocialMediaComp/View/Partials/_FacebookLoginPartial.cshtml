@@ -1,0 +1,25 @@
+﻿
+@*<script src="~/Scripts/SignUp/Facebook.js"></script>*@
+<button   onclick="SetClicked(); GetFacebookDataAPI();"><img src="~/Images/LoginImages/facebook.png" width="9" height="17" style="margin-right: 22px;" /><span class="formtext">@ViewBag.Label WITH FACEBOOK</span></button>
+<input type="hidden" id="hdnProfile" value="" />
+<script type="text/javascript" defer>
+
+    var buttonClicked = false;
+
+    function SetClicked() {
+        buttonClicked = true;
+        return true;
+
+    }
+
+
+    var GetFacebookDataAPI = function () {
+        FB.login(function (response) {
+
+            checkLoginState();
+            testAPI();
+        }, { scope: 'public_profile,email' });
+    }
+
+</script>
+

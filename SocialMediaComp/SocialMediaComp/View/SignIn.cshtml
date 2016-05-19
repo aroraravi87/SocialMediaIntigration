@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Sign In - This Inspired";
+    Layout = "~/Views/Shared/_ThisInspiredLayout.cshtml";
+}
+@section SEOMeta
+{
+    <meta name="keywords" content="This Inspired,Inspired,Sign,With,facebook,google,twitter,log,in" />
+    <meta name="description" content="This is the Sign-In page of This Inspired, in which user can sign in with Twitter,facebook,google" />
+<script src="~/Scripts/SignUp/Facebook.js"></script>
+<script src="~/Scripts/SignUp/Google.js"></script>
+}
+<script src="~/Scripts/Angulers/angulerController.js"></script>
+@Html.Hidden("hdnuserid", "0")
+<input type="hidden" value='@System.Web.Configuration.WebConfigurationManager.AppSettings["facebookAppID"]' id='facebookAppID' />
+<input type="hidden" value='@System.Web.Configuration.WebConfigurationManager.AppSettings["googleAppID"]' id='googleAppID' />
+<div class="inner-wapper">
+    <section class="content formUpper">
+        <div class="form-block">
+            <div style="text-align:center">
+                <div class="Content-Center">
+
+                    <button onclick="window.location.href = '../Authenticate/TwitterOauth'"><img src="~/Images/LoginImages/twitter.png" width="16" height="15" /><span class="formtext">SIGN IN WITH TWITTER</span></button>
+                </div>
+            </div>
+            <div style="text-align:center">
+                <div class="Content-Center">
+                    @Html.Partial("~/Views/Partials/_FacebookLoginPartial.cshtml")
+                </div>
+            </div>
+            <div style="text-align:center">
+                <div class="Content-Center">
+                    @Html.Partial("~/Views/Partials/_GoogleLoginPartial.cshtml")
+
+                </div>
+            </div>
+            <div style="text-align:center">
+                <div class="termsService">
+                    <p>By Joining This Inspired, I accept This Inspired's <a href="../terms-of-service" >Terms of Service</a> and <a href="../privacy-policy" >Privacy Policy</a></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $('#menulist').show();
+        //$('#LoginDiv').show();
+        //$('#LoginDivSlider').show();
+        //$('#ProfileDivSlider').hide();
+        //$('#profileimgMobile').hide();
+
+        @*$('#UniqueUserName').val(@Session["UniqueUserName"]);*@
+        $(document).ready(function () {
+            
+
+            $('#hdnuserid').val(getNumber(@Session["UserID"]));
+
+            if ($('#hdnuserid').val() != "0") {
+
+                if ($('#hdnuserid').val() == "-99") {
+                    $('#btncreateinspiration').attr("style", "display:none");
+                }
+                $('#LoginDiv').hide();
+                $('#ProfileDiv').show();
+                var imagesrc = "@Session["UserProfile"]";
+                $('#profileimg').attr("src", imagesrc.replace(/&amp;/g, '&'));
+                $('#profileimgMobile').attr("src", imagesrc.replace(/&amp;/g, '&'));
+                $('#LoginDivSlider').hide();
+                $('#ProfileDivSlider').show();
+            }
+            else {
+                $('#LoginDiv').show();
+                $('#ProfileDiv').hide();
+                $('#LoginDivSlider').show();
+                $('#ProfileDivSlider').hide();
+                $('#profileimgMobile').hide();
+            }
+            $("header :first-child").addClass('detailInspiration');
+
+        });
+
+        function getNumber(val) {
+            if (isNaN(val))
+
+                return 0;
+            else
+                return val;
+        }
+
+    </script>
+}
+

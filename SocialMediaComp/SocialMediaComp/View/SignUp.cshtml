@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Sign Up - This Inspired";
+    Layout = "~/Views/Shared/_ThisInspiredLayout.cshtml";
+}
+ 
+@section SEOMeta
+{
+    <meta name="keywords" content="This Inspired,Inspired,With,facebook,google,twitter,Register,Create,Account" />
+    <meta name="description" content="This is the Sign-Up page of This Inspired, in which user can Sign-Up in to the site with Twitter,facebook,google." />
+<script src="~/Scripts/SignUp/Facebook.js"></script>
+<script src="~/Scripts/SignUp/Google.js"></script>
+}
+<script src="~/Scripts/Angulers/angulerController.js"></script>
+@Html.Hidden("UniqueUserName", "")
+@Html.Hidden("hdnuserid", "0")
+<input type="hidden" value='@System.Web.Configuration.WebConfigurationManager.AppSettings["facebookAppID"]' id='facebookAppID' />
+<input type="hidden" value='@System.Web.Configuration.WebConfigurationManager.AppSettings["googleAppID"]' id='googleAppID' />
+<div class="inner-wapper">
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                @Html.ValidationMessage("Message")
+            </div>
+        </div>
+    </div>
+    <section class="content formUpper">
+        <div class="form-block">
+            <div style="text-align:center">
+                <div class="Content-Center">
+                    <button onclick="window.location.href = '../Authenticate/TwitterOauth'"><img src="~/Images/LoginImages/twitter.png" width="16" height="15" /><span class="formtext">SIGN UP WITH TWITTER</span></button>
+                </div>
+            </div>
+            <div style="text-align:center">
+                <div class="Content-Center">
+                    @Html.Partial("~/Views/Partials/_FacebookLoginPartial.cshtml")
+                </div>
+            </div>
+            <div style="text-align:center">
+                <div class="Content-Center">
+                    @Html.Partial("~/Views/Partials/_GoogleLoginPartial.cshtml")
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $('#menulist').show();
+        @*$('#LoginDiv').show();
+        $('#LoginDivSlider').show();
+        $('#ProfileDivSlider').hide();
+        $('#profileimgMobile').hide();
+        $('#UniqueUserName').val(@Session["UniqueUserName"]);*@
+       
+
+        $(document).ready(function () {
+          
+            $('#hdnuserid').val(getNumber(@Session["UserID"]));
+
+            if ($('#hdnuserid').val() != "0") {
+
+                if ($('#hdnuserid').val() == "-99") {
+                    $('#btncreateinspiration').attr("style", "display:none");
+                }
+                $('#LoginDiv').hide();
+                $('#ProfileDiv').show();
+                var imagesrc = "@Session["UserProfile"]";
+                $('#profileimg').attr("src", imagesrc.replace(/&amp;/g, '&'));
+                $('#profileimgMobile').attr("src", imagesrc.replace(/&amp;/g, '&'));
+                $('#LoginDivSlider').hide();
+                $('#ProfileDivSlider').show();
+            }
+            else {
+                $('#LoginDiv').show();
+                $('#ProfileDiv').hide();
+                $('#LoginDivSlider').show();
+                $('#ProfileDivSlider').hide();
+                $('#profileimgMobile').hide();
+            }
+            $("header :first-child").addClass('detailInspiration');
+
+        });
+
+        function getNumber(val) {
+            if (isNaN(val))
+
+                return 0;
+            else
+                return val;
+        }
+    </script>
+}

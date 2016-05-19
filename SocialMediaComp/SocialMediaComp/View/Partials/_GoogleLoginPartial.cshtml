@@ -1,0 +1,142 @@
+﻿
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+<style type="text/css">
+    #customBtn {
+        /*display: inline-block;
+        background: #dd4b39;
+        color: white;
+        width: 165px;
+        border-radius: 5px;
+        white-space: nowrap;*/
+    }
+
+        #customBtn:hover {
+            /*background: #e74b37;
+            cursor: hand;*/
+        }
+
+    span.label {
+        /*font-weight: bold;*/
+    }
+
+    span.icon {
+        background: url('/Images/sign-in-with-google.png') no-repeat;
+        display: inline-block;
+        vertical-align: middle;
+        height: 75px;
+        width: 345px;
+    }
+
+    span.buttonText {
+        /*display: inline-block;
+    vertical-align: middle;
+    padding-left: 35px;
+    padding-right: 35px;
+    font-size: 14px;
+    font-weight: bold;
+    /* Use the Roboto font that is loaded in the <head> */
+        /*font-family: 'Roboto',arial,sans-serif;*/ */;
+    }
+</style>
+<!-- In the callback, you would hide the gSignInWrapper element on a
+successful sign in -->
+<div id="gSignInWrapper">
+    <span class="label"></span>
+    <div id="customBtn" class="customGPlusSignIn">
+        @*<input type="button" value="@ViewBag.UserName With GOOGLE "  style="width:200px" onclick="helper.profile();" />*@
+        <button onclick="return setGoogleClicked(this);helper.profile();"><img src="~/Images/LoginImages/google.png" width="17" height="17" /><span class="formtext">@ViewBag.Label WITH GOOGLE</span></button>
+
+    </div>
+</div>
+
+<script type="text/javascript" defer>
+
+    var buttonClickedGoogle = false;
+    function setGoogleClicked(obj) {
+        buttonClickedGoogle = true;
+        return true;
+    }
+
+
+    var helper = (function () {
+        var BASE_API_PATH = 'plus/v1/';
+
+        return {
+
+            onSignInCallback: function (authResult) {
+
+                gapi.client.load('plus', 'v1', function () {
+
+                    if (authResult['access_token']) {
+
+                        if (buttonClickedGoogle) {
+                            helper.profile();
+                            helper.profile();
+                        }
+                        //helper.profile();
+
+                    } else if (authResult['error']) {
+                        // There was an error, which means the user is not signed in.
+                        // As an example, you can handle by writing to the console:
+                        console.log('There was an error: ' + authResult['error']);
+                        //alert(authResult['error']+"hi");
+                    }
+                    console.log('authResult', authResult);
+                });
+            },
+
+
+
+
+
+            /**
+             * Gets and renders the currently signed in user's profile data.
+             */
+            profile: function () {
+
+                var request = gapi.client.plus.people.get({ 'userId': 'me' });
+
+                request.execute(function (profile) {
+
+                    if (profile.error) {
+                        //  alert(profile.error);
+                        return;
+                    }
+
+                    var primaryEmail;
+                    for (var i = 0; i < profile.emails.length; i++) {
+                        if (profile.emails[i].type === 'account') {
+                            primaryEmail = profile.emails[i].value;
+                        }
+                    }
+                    $.ajax({
+                        type: 'Post',
+                        url: '@Url.Action("InsertUserInformation", "Authenticate")',
+
+                        data: { "username": profile.displayName, "email": primaryEmail, "fullname": profile.displayName, "gender": profile.gender, "imageUrl": profile.image.url, "signuptype": "Google" },
+                        dataType: 'json',
+                        async: false,
+                        cache: false,
+                        success: function (result) {
+                            if (result != null) {
+                                window.location.href = "../" + result;
+
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        }
+
+                    });
+                });
+            }
+        };
+    })();
+
+    function onSignInCallback(authResult) {
+
+        helper.onSignInCallback(authResult);
+    }
+</script>

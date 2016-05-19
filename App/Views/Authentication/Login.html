@@ -1,0 +1,37 @@
+﻿<div class="container">
+    <div class="content">
+        <div class="content_rgt">
+            <div class="login_sec">
+                <h1>Log In</h1>
+                <div class="clearfix"></div>
+                <div ng-show="error" class="alert alert-danger">{{error}}</div>
+                <ul>
+                    <li>
+                        <span>Email-ID</span>
+                        <input type="text" placeholder="Enter your email" data-ng-model="formdata.username">
+                    </li>
+                    <li>
+                        <span>Password</span>
+                        <input type="text" placeholder="Enter your password" data-ng-model="formdata.password">
+                    </li>
+                    <li>
+                        <input type="checkbox" data-ng-model="formdata.remember">Remember Me
+                    </li>
+                    <li>
+                        <input type="submit" value="Log In" ng-click="clicked()">
+                        <a href="#/forgetpassword">Forgot Password</a>
+                    </li>
+                </ul>
+                <div class="addtnal_acnt">I do not have any account yet.<a href="#/signup">Create My Account Now !</a></div>
+            </div>
+
+        </div>
+        <div class="content_lft">
+            <h1>Welcome from PPL!</h1>
+            <p class="discrptn">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+            <img src="App/Content/images/img_9.png" alt="" />
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>

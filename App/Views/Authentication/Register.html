@@ -1,0 +1,95 @@
+﻿<div class="container">
+    <div class="content">
+        <div class="content_rgt">
+            <div class="register_sec userRegister">
+                <h1>Create An Account</h1>
+                <div class="clearfix"></div>
+                <div ng-show="error" class="alert alert-danger">{{error}}</div>
+                <!--<ul>
+                    <li>
+                        <span>Username</span>
+                        <input type="text" placeholder="Enter your username" data-ng-model="formdata.username">
+                    </li>
+                    <li>
+                        <span>Password</span>
+                        <input type="text" placeholder="Enter your password" data-ng-model="formdata.password">
+                    </li>
+                    <li>
+                        <span>Email</span>
+                        <input type="email" placeholder="Enter your email" data-ng-model="formdata.email">
+                    </li>
+                    <li>
+                        <span>First Name</span>
+                        <input type="text" placeholder="Enter your first name" data-ng-model="formdata.firstName">
+                    </li>
+                    <li>
+                        <span>Last Name</span>
+                        <input type="text" placeholder="Enter your last name" data-ng-model="formdata.lastName">
+                    </li>
+                    <li><input type="checkbox" required>I agree to Term & Conditions</li>
+                    <li><input type="submit" value="Register" ng-click="registerUser()"></li>
+                </ul>-->
+                <!--
+                    <li class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+                            <span>Password</span>
+                            <input type="text" name="password" placeholder="Enter your password" data-ng-model="formdata.password" class="form-control" ng-minlength="6" required>
+                            <p ng-show="userForm.password.$error.minlength" class="help-block">password must be at least 6 characters.</p>
+                        </li>
+
+                     <li class="form-group" ng-class="{ 'has-error' : showErrors && userForm.ckeckAgree.$invalid}">
+                            <input type="checkbox" name="ckeckAgree" class="form-control" data-ng-model="formdata.checkAgree" required>I agree to Term & Conditions
+                            <span class="requiredMark">*</span>
+                            <p ng-show="userForm.ckeckAgree.$touched && !userForm.ckeckAgree.$pristine" class="help-block">You must be agree for terma and conditions.</p>
+                        </li>
+                    -->
+
+
+                <form name="userForm" ng-submit="registerUser()" novalidate>
+                    <ul>
+                        <li class="form-group" ng-class="{ 'has-error' : showErrors && userForm.username.$invalid}">
+                            <span>Username</span><span class="requiredMark">*</span>
+                            <input type="text" name="username" placeholder="Enter your username" data-ng-model="formdata.username" class="form-control" required>
+                            <p ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block">username is required.</p>
+                        </li>
+                        <li class="form-group" ng-class="{ 'has-error' : showErrors && userForm.password.$invalid }">
+                            <span>Password</span><span class="requiredMark">*</span>
+                            <input type="text" name="password" placeholder="Enter your password" data-ng-model="formdata.password" class="form-control" ng-minlength="6" required>
+                            <p ng-show="userForm.password.$error.minlength" class="help-block">password must be at least 6 characters.</p>
+                        </li>
+                        <li class="form-group" ng-class="{ 'has-error' : showErrors && userForm.email.$invalid}">
+                            <span>Email</span><span class="requiredMark">*</span>
+                            <input type="email" name="email" placeholder="Enter your email" data-ng-model="formdata.email" class="form-control" required>
+                            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                        </li>
+                        <li class="form-group" ng-class="{ 'has-error' : showErrors && userForm.firstName.$invalid}">
+                            <span>First Name</span><span class="requiredMark">*</span>
+                            <input type="text" name="firstName" placeholder="Enter your first name" data-ng-model="formdata.firstName" class="form-control" required>
+                            <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine" class="help-block">firstName is required.</p>
+                        </li>
+                        <li class="form-group" ng-class="{ 'has-error' : showErrors && userForm.lastName.$invalid}">
+                            <span>Last Name</span><span class="requiredMark">*</span>
+                            <input type="text" name="lastName" placeholder="Enter your last name" data-ng-model="formdata.lastName" class="form-control" required>
+                            <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block">lastName is required.</p>
+                        </li>
+                        <li class="form-group">
+                            <input type="checkbox" name="ckeckAgree" class="form-control" data-ng-model="formdata.checkAgree">I agree to Term & Conditions
+                            <span class="requiredMark">*</span>
+                            <!--<p ng-show="userForm.ckeckAgree.$touched && !userForm.ckeckAgree.$pristine" class="help-block">You must be agree for terma and conditions.</p>-->
+                        </li>
+                        <li>
+                            <input type="submit" value="Register">
+                        </li>
+                    </ul>
+                </form>
+                <div class="addtnal_acnt">I already have an account.<a href="#/Login">Login My Account !</a></div>
+            </div>
+
+        </div>
+        <div class="content_lft">
+            <h1>Welcome from PPL!</h1>
+            <p class="discrptn">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+            <img src="App/Content/images/img_9.png" alt="" />
+        </div>
+    </div>
+</div>
+<div class="clear"></div>

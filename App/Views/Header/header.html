@@ -1,0 +1,66 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="brand" href="">PPL</a>
+            <div class="pro_info pull-right">
+                <div class="pro_icn"><img ng-src="{{user.picture}}"></div>
+                <div class="pro_txt">Me<b class="caret"></b></div>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a tabindex="-1" href="#">My Profile</a></li>
+                    <li><a tabindex="-1" href="#/construction">Message Box</a></li>
+                    <li class="divider"></li>
+                    <li>
+                        <a tabindex="-1" href="#/construction">
+                            <input type="text" ng-model="search.CatType" placeholder="search">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"> <a href="#/Home">Home</a> </li>
+                    <li class=""> <a href="#/construction">E-Coupons</a> </li>
+                    <li class=""> <a href="#/construction">E-Brands</a> </li>
+                    <li class=""> <a href="#/construction">Resuse Market</a> </li>
+                    <li class=""> <a href="#/construction">Lost and Found</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+<div class="header">
+    <div class="header_lft">
+        <div class="logo"><a href="#/Home"><img src="App/Content/images/logo.png"></a></div>
+        <div class="navigatn">
+            <ul>
+                <li><a href="#/Home" class="active">Home</a></li>
+                <li><a href="#/construction"> E-Coupons </a></li>
+                <li><a href="#/construction">E-Brands </a></li>
+                <li><a href="#/construction"> Resuse Market </a></li>
+                <li><a href="#/lostAndFound"> Lost and Found</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header_rgt">
+        <div class="flag_div"><img src="App/Content/images/flag.png"></div>
+        <input type="text" ng-model="search.CatType" placeholder="Search" class="txt_box">
+        <div class="msg_box" ng-show="show"><a href="#/construction"><span class="msg_count">100</span></a></div>
+        <div class="info_div" ng-show="show">
+            <div class="image_div"> <img ng-src="{{user.picture}}" style="border-radius:50px;margin-top:-8px"> </div>
+            <div class="info_div1 profileMenuDesktop" style="background-image: url(); cursor:pointer;">
+                {{user.firstName}}
+                    <ul class="dropdown-menu deskMenu" role="menu" aria-labelledby="dLabel">
+                    <li><a tabindex="-1" href="#/userprofile">My Profile</a></li>
+                    <li><a tabindex="-1" href="#/resetpassword">Change Password</a></li>
+                    <li><a tabindex="-1" href="#/construction">Message Box</a></li>
+                    <li class="divider"></li>
+                    <li><a tabindex="-1" ng-click="logOut()">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</header>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> Socail Media Intigration</title>
+    <!--style References-->
+    <!--<link href="Content/Styles/bootstrap.min.css" rel="stylesheet" />-->
+    <link href="Content/Styles/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Styles/bootstrap-responsive.css" rel="stylesheet" />
+    
+    <!--<link href="Content/Styles/style.css" rel="stylesheet" />-->
+    <!--Script References-->
+    <script src="Config/config.js" type="text/javascript"></script>
+    <script src="Content/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Content/Scripts/bootstrap.js"></script>
+    <script src="Content/Scripts/bootstrap.min.js"></script>
+
+   
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.min.js" type="text/javascript"></script>
+    <script src="lib/angular-cookies.min.js" type="text/javascript"></script>
+    <script src="lib/angular-touch.min.js" type="text/javascript"></script>
+    <script src="lib/angular-base64.min.js"></script>
+    <!--<script src="Content/Scripts/ui-bootstrap-tpls-0.12.0.min.js"></script>-->
+    <script src="Content/Scripts/ui-bootstrap-tpls-1.2.5.js"></script>
+    <!--<script src="Content/Scripts/angular-base64-upload.js"></script>-->
+
+    <script src="routes.js" type="text/javascript"></script>
+    <script src="Directives/Header/header.js" type="text/javascript"></script>
+    <script src="Directives/Navigation/nav.js" type="text/javascript"></script>
+    <script src="Directives/Footer/footer.js" type="text/javascript"></script>
+    <script src="Directives/ForgetPasswordPopup/forgetPasswordPopup.js" type="text/javascript"></script>
+    <script src="Directives/Common/loader.js"></script>
+    <script src="Directives/Common/imageUpload.js"></script>
+    <script src="Controllers/PPL/login.js"></script>
+    <script src="Controllers/PPL/profilePosts.js"></script>
+    <script src="Services/PPL/loginService.js"></script>
+    <script src="Services/PPL/profilePostsService.js"></script>
+    <script src="Services/PPL/messagePostsService.js"></script>
+    <script src="Services/PPL/accessService.js"></script>
+    <script src="Services/PPL/serviceCall.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#rght_cat_bg').click(function () {
+                $('.rght_list').toggle("slide");
+            });
+            $('#opn_cat_bg').click(function () {
+                $('.sub_dwn').toggle("slide");
+            });
+            $('#clos_pop').click(function () {
+                $('#pop_forgt').toggle("slide");
+            });            
+        });
+
+        $(document).on('click', '.profileMenuDesktop', function () {
+            //alert("Dynamic button action");
+            $(".dropdown-menu.deskMenu").toggle("slide");
+        });
+
+    </script>
+
+    
+
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+
+<body data-ng-app="routes" data-ng-controller="spaController">
+   <spa-header></spa-header>
+    <div id="body">
+        <section class="content-wrapper main-content clear-fix">
+            <div class="martop15" data-ng-view></div>
+        </section>
+    </div>
+    <spa-footer></spa-footer>
+
+</body>
+</html>

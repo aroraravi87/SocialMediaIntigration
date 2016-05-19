@@ -1,0 +1,89 @@
+﻿@model ThisInspired.Library.ViewModels.AuthenticationModel
+@{
+    ViewBag.Title = "Twitter SignUp - This Inspired";
+    Layout = "~/Views/Shared/_ThisInspiredLayout.cshtml";
+}
+<script src="~/Scripts/Angulers/angulerController.js"></script>
+@using (Html.BeginForm("InsertTwitterInformation", "Authenticate", FormMethod.Post, null))
+{
+    HtmlHelper.ClientValidationEnabled = true;
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+
+    <div class="inner-wapper signInBlock">
+        <section class="content">
+            <div class="settingsFormUppertwitter">
+                <div id="status" class="settingsForm">
+
+
+                    <div class="entryDiv">
+                        @Html.Label("FULL NAME", new { })
+                        @Html.TextBoxFor(model => model.Fullname, new { })
+                        @Html.ValidationMessageFor(model => model.Fullname)
+                        @Html.HiddenFor(model => model.TwitterID)
+                        @Html.HiddenFor(model => model.ImageUrl)
+                    </div>
+
+
+                    <div class="entryDiv">
+                        @Html.Label("USERNAME", new { })
+                        @Html.TextBoxFor(model => model.Username, new { })
+                        @Html.ValidationMessageFor(model => model.Username)
+                    </div>
+
+
+                    <div class="entryDiv">
+                        @Html.Label("EMAIL ADDRESS", new { })
+                        @Html.TextBoxFor(model => model.Email, new { })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+
+                    <div class="checkboxBlock">
+                        <div>
+                            @Html.CheckBoxFor(model => model.LikePost, new { })
+                            @Html.Label("Post Inspirations I like to Twitter ", new { })
+                        </div>
+                    </div>
+
+                    <div class="checkboxBlock">
+                        <div>
+                            @Html.CheckBoxFor(model => model.CreatePost, new { })
+                            @Html.Label("Post Inspirations I create to Twitter", new { })
+
+                        </div>
+                    </div>
+
+                    <div class="checkboxBlock">
+                        <div>
+
+                            @Html.CheckBoxFor(model => model.FollowAPI, new { })
+                            @Html.Label("Follow @Nuji on Twitter", new { })
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <input type="submit" class="settingBtn" value="CREATE ACCOUNT " style="width:200px;background-color:#000000;color:#fff" />
+                        </div>
+                    </div>
+                    <div>
+                        <div class="termsService">
+                            <p>By Joining This Inspired, I accept This Inspired's <a href="../terms-of-service">Terms of Service</a> and <a href="../privacy-policy">Privacy Policy</a></p>
+                        </div>
+                    </div>
+                </div></div>
+</section>
+    </div>
+}
+@section scripts
+{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $('#menulist').show();
+        $('#LoginDiv').show();
+        $('#LoginDivSlider').show();
+    </script>
+}
+
+
+
+
